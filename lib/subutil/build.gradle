@@ -3,11 +3,6 @@ apply {
     plugin "readme-sub"
 }
 
-readme {
-    readmeFile file('./README.md')
-    readmeCnFile file('./README-CN.md')
-}
-
 dependencies {
     compileOnly Config.depConfig.support_appcompat.dep
     compileOnly Config.depConfig.support_material.dep

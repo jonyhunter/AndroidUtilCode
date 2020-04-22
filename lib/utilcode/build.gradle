@@ -3,11 +3,6 @@ apply {
     plugin "readme-core"
 }
 
-readme {
-    readmeFile file('./README.md')
-    readmeCnFile file('./README-CN.md')
-}
-
 android {
     compileSdkVersion Config.compileSdkVersion
     defaultConfig {
