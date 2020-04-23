@@ -1,6 +1,6 @@
 apply {
     plugin Config.depConfig.plugin_traute.pluginId
-    plugin "readme-sub"
+//    plugin "readme-sub"
 }
 
 dependencies {
