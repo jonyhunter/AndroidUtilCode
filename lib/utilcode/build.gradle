@@ -31,7 +31,7 @@ dependencies {
     testImplementation Config.depConfig.test_robolectric.dep
     testImplementation Config.depConfig.support_appcompat.dep
     testImplementation Config.depConfig.support_material.dep
-    testImplementation Config.depConfig.eventbus_lib.dep
+//    testImplementation Config.depConfig.eventbus_lib.dep
 }
 
 afterEvaluate {

@@ -41,8 +41,6 @@ class Config {
             lib_common                 : new DepConfig(true , true , ":lib:common"),
             lib_subutil                : new DepConfig(true , true , ":lib:subutil"),
             lib_utilcode               : new DepConfig(true , true , ":lib:utilcode", "com.blankj:utilcodex:$versionName"),
-            lib_utildebug              : new DepConfig(true , true , ":lib:utildebug"),
-            lib_utildebug_no_op        : new DepConfig(true , true , ":lib:utildebug-no-op"),
             /*Never delete this line*/
             plugin_gradle              : new DepConfig(pluginPath: "com.android.tools.build:gradle:$gradlePluginVersion"),
             plugin_kotlin              : new DepConfig(pluginPath: "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"),
@@ -76,8 +74,8 @@ class Config {
             retrofit                   : new DepConfig("com.squareup.retrofit2:retrofit:2.4.0"),
             commons_io                 : new DepConfig("commons-io:commons-io:2.6"),
 
-            eventbus_lib               : new DepConfig("org.greenrobot:eventbus:3.1.1"),
-            eventbus_processor         : new DepConfig("org.greenrobot:eventbus-annotation-processor:3.0.1"),
+            //eventbus_lib               : new DepConfig("org.greenrobot:eventbus:3.1.1"),
+            //eventbus_processor         : new DepConfig("org.greenrobot:eventbus-annotation-processor:3.0.1"),
 
             photo_view                 : new DepConfig("com.github.chrisbanes:PhotoView:2.0.0"),
 

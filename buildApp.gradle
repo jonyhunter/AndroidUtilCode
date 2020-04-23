@@ -70,8 +70,8 @@ dependencies {
     // LeakCanary
     debugImplementation Config.depConfig.leakcanary_android.dep
 
-    debugImplementation Config.depConfig.lib_utildebug.dep
-    releaseImplementation Config.depConfig.lib_utildebug_no_op.dep
+//    debugImplementation Config.depConfig.lib_utildebug.dep
+//    releaseImplementation Config.depConfig.lib_utildebug_no_op.dep
 
     // 根据 Config.pkgConfig 来依赖所有 pkg
     for (def entrySet : ConfigUtils.getApplyPkgs().entrySet()) {

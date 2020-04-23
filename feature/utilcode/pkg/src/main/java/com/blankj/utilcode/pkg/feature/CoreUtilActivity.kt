@@ -14,7 +14,6 @@ import com.blankj.utilcode.pkg.feature.api.ApiActivity
 import com.blankj.utilcode.pkg.feature.app.AppActivity
 import com.blankj.utilcode.pkg.feature.bar.BarActivity
 import com.blankj.utilcode.pkg.feature.brightness.BrightnessActivity
-import com.blankj.utilcode.pkg.feature.bus.BusActivity
 import com.blankj.utilcode.pkg.feature.clean.CleanActivity
 import com.blankj.utilcode.pkg.feature.click.ClickActivity
 import com.blankj.utilcode.pkg.feature.device.DeviceActivity
@@ -89,9 +88,6 @@ class CoreUtilActivity : CommonActivity() {
                 },
                 CommonItemClick(R.string.demo_brightness, true) {
                     BrightnessActivity.start(this)
-                },
-                CommonItemClick(R.string.demo_bus, true) {
-                    BusActivity.start(this)
                 },
                 CommonItemClick(R.string.demo_clean, true) {
                     CleanActivity.start(this)

@@ -9,8 +9,6 @@ import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.CrashUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ProcessUtils;
-import com.blankj.utildebug.DebugUtils;
-import com.blankj.utildebug.debug.IDebug;
 
 import java.util.ArrayList;
 
@@ -45,7 +43,6 @@ public class BaseApplication extends Application {
         sInstance = this;
         initLog();
         initCrash();
-        initDebugMenu();
     }
 
     // init it in ur application
@@ -87,10 +84,6 @@ public class BaseApplication extends Application {
                 AppUtils.relaunchApp();
             }
         });
-    }
-
-    private void initDebugMenu() {
-        DebugUtils.addDebugs(new ArrayList<IDebug>());
     }
 
     private boolean isDebug() {
