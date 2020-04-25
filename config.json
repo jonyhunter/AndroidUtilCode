@@ -8,15 +8,15 @@
     {"isApply": true, "useLocal": true, "localPath": ":plugin:api-gradle-plugin"},
     {"isApply": true, "useLocal": true, "localPath": ":plugin:bus-gradle-plugin"},
     {"isApply": true, "useLocal": true, "localPath": ":feature:mock"},
-    {"isApply": true, "useLocal": true, "localPath": ":feature:launcher:app"},
-    {"isApply": true, "useLocal": true, "localPath": ":feature:main:app"},
-    {"isApply": true, "useLocal": true, "localPath": ":feature:main:pkg"},
-    {"isApply": true, "useLocal": true, "localPath": ":feature:utilcode:app"},
-    {"isApply": true, "useLocal": true, "localPath": ":feature:utilcode:pkg"},
-    {"isApply": true, "useLocal": true, "localPath": ":feature:utilcode:export"},
     {"isApply": true, "useLocal": true, "localPath": ":lib:base"},
     {"isApply": true, "useLocal": true, "localPath": ":lib:common"},
     {"isApply": true, "useLocal": true, "localPath": ":lib:subutil"},
-    {"isApply": true, "useLocal": true, "localPath": ":lib:utilcode", "remotePath": "com.blankj:utilcodex:$versionName"}
+    {"isApply": true, "useLocal": true, "localPath": ":lib:utilcode", "remotePath": "com.blankj:utilcodex:$versionName"},
+    {"isApply": true, "useLocal": true, "localPath": ":feature:launcher:app"},
+    {"isApply": true, "useLocal": true, "localPath": ":feature:splash:app"},
+    {"isApply": true, "useLocal": true, "localPath": ":feature:splash:pkg"},
+    {"isApply": true, "useLocal": true, "localPath": ":feature:main:app"},
+    {"isApply": true, "useLocal": true, "localPath": ":feature:main:pkg"},
+    {"isApply": true, "useLocal": true, "localPath": ":feature:main:export"}
   ]
 }

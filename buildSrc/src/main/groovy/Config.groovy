@@ -28,16 +28,16 @@ class Config {
             plugin_api_gradle_plugin   : new DepConfig(true , true , ":plugin:api-gradle-plugin"),
             plugin_bus_gradle_plugin   : new DepConfig(true , true , ":plugin:bus-gradle-plugin"),
             feature_mock               : new DepConfig(false, true , ":feature:mock"),
-            feature_launcher_app       : new DepConfig(true , true , ":feature:launcher:app"),
-            feature_main_app           : new DepConfig(false, true , ":feature:main:app"),
-            feature_main_pkg           : new DepConfig(true , true , ":feature:main:pkg"),
-            feature_utilcode_app       : new DepConfig(false, true , ":feature:utilcode:app"),
-            feature_utilcode_pkg       : new DepConfig(true , true , ":feature:utilcode:pkg"),
-            feature_utilcode_export    : new DepConfig(true , true , ":feature:utilcode:export"),
             lib_base                   : new DepConfig(true , true , ":lib:base"),
             lib_common                 : new DepConfig(true , true , ":lib:common"),
             lib_subutil                : new DepConfig(true , true , ":lib:subutil"),
             lib_utilcode               : new DepConfig(true , true , ":lib:utilcode", "com.blankj:utilcodex:$versionName"),
+            feature_launcher_app       : new DepConfig(true , true , ":feature:launcher:app"),
+            feature_splash_app         : new DepConfig(false, true , ":feature:splash:app"),
+            feature_splash_pkg         : new DepConfig(true , true , ":feature:splash:pkg"),
+            feature_main_app           : new DepConfig(false, true , ":feature:main:app"),
+            feature_main_pkg           : new DepConfig(true , true , ":feature:main:pkg"),
+            feature_main_export        : new DepConfig(true , true , ":feature:main:export"),
             /*Never delete this line*/
             plugin_gradle              : new DepConfig(pluginPath: "com.android.tools.build:gradle:$gradlePluginVersion"),
             plugin_kotlin              : new DepConfig(pluginPath: "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"),
@@ -70,9 +70,6 @@ class Config {
             glide                      : new DepConfig("com.github.bumptech.glide:glide:4.7.1"),
             retrofit                   : new DepConfig("com.squareup.retrofit2:retrofit:2.4.0"),
             commons_io                 : new DepConfig("commons-io:commons-io:2.6"),
-
-            //eventbus_lib               : new DepConfig("org.greenrobot:eventbus:3.1.1"),
-            //eventbus_processor         : new DepConfig("org.greenrobot:eventbus-annotation-processor:3.0.1"),
 
             photo_view                 : new DepConfig("com.github.chrisbanes:PhotoView:2.0.0"),
 

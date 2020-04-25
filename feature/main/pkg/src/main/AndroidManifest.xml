@@ -1,13 +1,8 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.blankj.main.pkg">
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.ihaidu.main.pkg">
 
     <application>
-        <activity
-            android:name=".MainActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="user"
-            android:theme="@style/SplashTheme"
-            android:windowSoftInputMode="stateHidden" />
+
     </application>
 
 </manifest>
