@@ -19,7 +19,7 @@
         android:paddingRight="20dp"
         android:paddingBottom="10dp">
 
-        <com.blankj.common.view.RotateView
+        <com.ihaidu.common.view.RotateView
             android:layout_width="22dp"
             android:layout_height="22dp"
             android:background="@drawable/common_loading" />

@@ -1,6 +1,6 @@
 package com.ihaidu.main.pkg.feature.activity;
 
-import com.blankj.common.activity.CommonActivity;
+import com.ihaidu.common.activity.CommonActivity;
 import com.ihaidu.main.pkg.R;
 
 public class MainActivity extends CommonActivity {

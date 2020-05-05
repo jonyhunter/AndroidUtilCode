@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         tools:text="title" />
 
-    <com.blankj.base.view.EmptyGoneTextView
+    <com.ihaidu.base.view.EmptyGoneTextView
         android:id="@+id/commonItemContentTv"
         style="@style/CommonItemContentStyle"
         android:layout_width="match_parent"

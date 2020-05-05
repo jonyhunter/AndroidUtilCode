@@ -1,6 +1,6 @@
 package com.ihaidu.splash.pkg;
 
-import com.blankj.common.activity.CommonActivity;
+import com.ihaidu.common.activity.CommonActivity;
 import com.blankj.utilcode.util.ApiUtils;
 import com.blankj.utilcode.util.ThreadUtils;
 import com.blankj.utilcode.util.ToastUtils;

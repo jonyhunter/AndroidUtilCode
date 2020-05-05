@@ -1,6 +1,6 @@
 package com.ihaidu.launcher.app;
 
-import com.blankj.common.CommonApplication;
+import com.ihaidu.common.CommonApplication;
 
 public class LauncherApp extends CommonApplication {
 
