@@ -1,6 +1,7 @@
 package com.blankj.utilcode.util;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
@@ -10,7 +11,6 @@ import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.provider.Settings;
 import android.util.Log;
 
 import java.io.File;
@@ -70,8 +70,22 @@ public final class AppUtils {
      * @param file The file.
      */
     public static void installApp(final File file) {
-        if (!UtilsBridge.isFileExists(file)) return;
-        Utils.getApp().startActivity(UtilsBridge.getInstallAppIntent(file));
+        Intent installAppIntent = UtilsBridge.getInstallAppIntent(file);
+        if (installAppIntent == null) return;
+        Utils.getApp().startActivity(installAppIntent);
+    }
+
+    /**
+     * Install the app.
+     * <p>Target APIs greater than 25 must hold
+     * {@code <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />}</p>
+     *
+     * @param uri The uri.
+     */
+    public static void installApp(final Uri uri) {
+        Intent installAppIntent = UtilsBridge.getInstallAppIntent(uri);
+        if (installAppIntent == null) return;
+        Utils.getApp().startActivity(installAppIntent);
     }
 
     /**
@@ -109,11 +123,7 @@ public final class AppUtils {
      */
     public static boolean isAppRoot() {
         ShellUtils.CommandResult result = UtilsBridge.execCmd("echo root", true);
-        if (result.result == 0) return true;
-        if (result.errorMsg != null) {
-            Log.d("AppUtils", "isAppRoot() called" + result.errorMsg);
-        }
-        return false;
+        return result.result == 0;
     }
 
     /**
@@ -283,13 +293,37 @@ public final class AppUtils {
     /**
      * Launch the application's details settings.
      *
-     * @param packageName The name of the package.
+     * @param pkgName The name of the package.
      */
-    public static void launchAppDetailsSettings(final String packageName) {
-        if (UtilsBridge.isSpace(packageName)) return;
-        Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-        intent.setData(Uri.parse("package:" + packageName));
-        Utils.getApp().startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+    public static void launchAppDetailsSettings(final String pkgName) {
+        if (UtilsBridge.isSpace(pkgName)) return;
+        Intent intent = UtilsBridge.getLaunchAppDetailsSettingsIntent(pkgName, true);
+        if (!UtilsBridge.isIntentAvailable(intent)) return;
+        Utils.getApp().startActivity(intent);
+    }
+
+    /**
+     * Launch the application's details settings.
+     *
+     * @param activity    The activity.
+     * @param requestCode The requestCode.
+     */
+    public static void launchAppDetailsSettings(final Activity activity, final int requestCode) {
+        launchAppDetailsSettings(activity, requestCode, Utils.getApp().getPackageName());
+    }
+
+    /**
+     * Launch the application's details settings.
+     *
+     * @param activity    The activity.
+     * @param requestCode The requestCode.
+     * @param pkgName     The name of the package.
+     */
+    public static void launchAppDetailsSettings(final Activity activity, final int requestCode, final String pkgName) {
+        if (activity == null || UtilsBridge.isSpace(pkgName)) return;
+        Intent intent = UtilsBridge.getLaunchAppDetailsSettingsIntent(pkgName, false);
+        if (!UtilsBridge.isIntentAvailable(intent)) return;
+        activity.startActivityForResult(intent, requestCode);
     }
 
     /**
