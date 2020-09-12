@@ -66,18 +66,33 @@ public final class IntentUtils {
      * @return the intent of install app
      */
     public static Intent getInstallAppIntent(final File file) {
-        if (file == null) return null;
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        Uri data;
-        String type = "application/vnd.android.package-archive";
+        if (!UtilsBridge.isFileExists(file)) return null;
+        Uri uri;
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
-            data = Uri.fromFile(file);
+            uri = Uri.fromFile(file);
         } else {
-            intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             String authority = Utils.getApp().getPackageName() + ".utilcode.provider";
-            data = FileProvider.getUriForFile(Utils.getApp(), authority, file);
+            uri = FileProvider.getUriForFile(Utils.getApp(), authority, file);
         }
-        intent.setDataAndType(data, type);
+        return getInstallAppIntent(uri);
+    }
+
+    /**
+     * Return the intent of install app.
+     * <p>Target APIs greater than 25 must hold
+     * {@code <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />}</p>
+     *
+     * @param uri The uri.
+     * @return the intent of install app
+     */
+    public static Intent getInstallAppIntent(final Uri uri) {
+        if (uri == null) return null;
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        String type = "application/vnd.android.package-archive";
+        intent.setDataAndType(uri, type);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        }
         return intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
     }
 
@@ -117,9 +132,19 @@ public final class IntentUtils {
      * @return the intent of launch app details settings
      */
     public static Intent getLaunchAppDetailsSettingsIntent(final String pkgName) {
+        return getLaunchAppDetailsSettingsIntent(pkgName, false);
+    }
+
+    /**
+     * Return the intent of launch app details settings.
+     *
+     * @param pkgName The name of the package.
+     * @return the intent of launch app details settings
+     */
+    public static Intent getLaunchAppDetailsSettingsIntent(final String pkgName, final boolean isNewTask) {
         Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
         intent.setData(Uri.parse("package:" + pkgName));
-        return getIntent(intent, true);
+        return getIntent(intent, isNewTask);
     }
 
     /**

@@ -1,3 +1,25 @@
+* `20/05/28` [fix] IntentUtils#getInstallAppIntent file exist wrong. Publish v1.29.0.
+* `20/05/23` [fix] BusUtils#postSticky times not right. Publish v1.28.6.
+* `20/05/22` [add] IntentUtils#getInstallAppIntent support Uri param.
+* `20/05/21` [add] Publish bus plugin v2.6. Publish api plugin v1.4. Publish. Publish v1.28.5.
+* `20/05/19` [fix] FileUtils#copyOrMoveDird NPE.
+* `20/05/18` [add] IntentUtils#getLaunchAppDetailsSettingsIntent support isNewTask.
+* `20/05/17` [add] ImageUtils#save2Album, NetworkUtils#getSSID, UtilsTransActivity4MainProcess.
+* `20/05/03` [add] Publish bus plugin v2.5. Publish api plugin v1.3. Publish. Publish v1.28.4.
+* `20/04/30` [add] BaseItem support partialUpdate.
+* `20/04/29` [add] Publish plugin lib com.blankj:base-transform:1.0.
+* `20/04/28` [fix] LanguageUtils#applyLanguage.
+* `20/04/27` [fix] BarUtils#isNavBarVisible.
+* `20/04/26` [fix] Utils#init fit tinker. Publish v1.28.3.
+* `20/04/25` [fix] UriUtils#uri2File Unknown URI. Publish 1.28.2.
+* `20/04/24` [add] SnackbarUtils support show on the top; UriUtils#uri2InputStream.
+* `20/04/23` [fix] UriUtils#uri2File not support HW; TransActivity crash below 21.
+* `20/04/23` [fix] PhoneUtils#getSerial, PhoneUtils#getSerial crash on Android 10.
+* `20/04/20` [fix] ImageUtils#isImage.
+* `20/04/18` [fix] PermissionUtils#callback. Publish v1.28.1.
+* `20/04/17` [fix] ImageUtils#view2Bitmap, ImageUtils.getBitmap(InputStream).
+* `20/04/16` [add] ConvertUtils#int2HexString, hexString2Int.
+* `20/04/15` [add] UiMessageUtils' demo.
 * `20/04/13` [add] NumberUtils. Publish v1.28.0.
 * `20/04/12` [opt] TimeUtils#SDF_THREAD_LOCAL.
 * `20/04/11` [add] SDCardUtils#getXxTotalSize, SDCardUtils#getXxAvailableSize. FileUtils#getFsTotalSize, FileUtils#getFsAvailableSize.

@@ -350,14 +350,22 @@ public final class ToastUtils {
 
         static IToast makeToast(Context context, CharSequence text, int duration) {
             if (NotificationManagerCompat.from(context).areNotificationsEnabled()) {
-                return new SystemToast(makeNormalToast(context, text, duration));
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    if (!UtilsBridge.isGrantedDrawOverlays()) {
+                        return new SystemToast(makeNormalToast(context, text, duration));
+                    }
+                }
             }
             return new ToastWithoutNotification(makeNormalToast(context, text, duration));
         }
 
         static IToast newToast(Context context) {
             if (NotificationManagerCompat.from(context).areNotificationsEnabled()) {
-                return new SystemToast(new Toast(context));
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    if (!UtilsBridge.isGrantedDrawOverlays()) {
+                        return new SystemToast(new Toast(context));
+                    }
+                }
             }
             return new ToastWithoutNotification(new Toast(context));
         }
@@ -450,15 +458,26 @@ public final class ToastUtils {
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N_MR1) {
                 mWM = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
                 mParams.type = WindowManager.LayoutParams.TYPE_TOAST;
+            } else if (UtilsBridge.isGrantedDrawOverlays()) {
+                mWM = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    mParams.type = WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY;
+                } else {
+                    mParams.type = WindowManager.LayoutParams.TYPE_PHONE;
+                }
             } else {
                 Context topActivityOrApp = UtilsBridge.getTopActivityOrApp();
                 if (!(topActivityOrApp instanceof Activity)) {
-                    Log.e("ToastUtils", "Couldn't get top Activity.");
+                    Log.w("ToastUtils", "Couldn't get top Activity.");
+                    // try to use system toast
+                    new SystemToast(mToast).show();
                     return;
                 }
                 Activity topActivity = (Activity) topActivityOrApp;
                 if (topActivity.isFinishing() || topActivity.isDestroyed()) {
-                    Log.e("ToastUtils", topActivity + " is useless");
+                    Log.w("ToastUtils", topActivity + " is useless");
+                    // try to use system toast
+                    new SystemToast(mToast).show();
                     return;
                 }
                 mWM = topActivity.getWindowManager();
@@ -466,6 +485,23 @@ public final class ToastUtils {
                 UtilsBridge.addActivityLifecycleCallbacks(topActivity, getActivityLifecycleCallbacks());
             }
 
+            setToastParams();
+
+            try {
+                if (mWM != null) {
+                    mWM.addView(mView, mParams);
+                }
+            } catch (Exception ignored) {/**/}
+
+            UtilsBridge.runOnUiThreadDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    cancel();
+                }
+            }, mToast.getDuration() == Toast.LENGTH_SHORT ? 2000 : 3500);
+        }
+
+        private void setToastParams() {
             mParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
             mParams.width = WindowManager.LayoutParams.WRAP_CONTENT;
             mParams.format = PixelFormat.TRANSLUCENT;
@@ -488,19 +524,6 @@ public final class ToastUtils {
             mParams.y = mToast.getYOffset();
             mParams.horizontalMargin = mToast.getHorizontalMargin();
             mParams.verticalMargin = mToast.getVerticalMargin();
-
-            try {
-                if (mWM != null) {
-                    mWM.addView(mView, mParams);
-                }
-            } catch (Exception ignored) {/**/}
-
-            UtilsBridge.runOnUiThreadDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    cancel();
-                }
-            }, mToast.getDuration() == Toast.LENGTH_SHORT ? 2000 : 3500);
         }
 
         private Utils.ActivityLifecycleCallbacks getActivityLifecycleCallbacks() {

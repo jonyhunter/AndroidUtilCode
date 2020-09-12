@@ -44,8 +44,10 @@ import com.blankj.utilcode.pkg.feature.snackbar.SnackbarActivity
 import com.blankj.utilcode.pkg.feature.spStatic.SPStaticActivity
 import com.blankj.utilcode.pkg.feature.span.SpanActivity
 import com.blankj.utilcode.pkg.feature.toast.ToastActivity
+import com.blankj.utilcode.pkg.feature.uiMessage.UiMessageActivity
 import com.blankj.utilcode.pkg.feature.vibrate.VibrateActivity
 import com.blankj.utilcode.util.CollectionUtils
+import com.blankj.utilcode.util.LogUtils
 import com.blankj.utilcode.util.UtilsTransActivity
 
 /**
@@ -191,9 +193,17 @@ class CoreUtilActivity : CommonActivity() {
                         }
                     })
                 },
+                CommonItemClick(R.string.demo_uiMessage, true) {
+                    UiMessageActivity.start(this)
+                },
                 CommonItemClick(R.string.demo_vibrate, true) {
                     VibrateActivity.start(this)
                 }
         )
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        LogUtils.e(requestCode, requestCode)
     }
 }
