@@ -7,10 +7,11 @@
   "proConfig": [
     {"isApply": true, "useLocal": true, "localPath": ":plugin:api-gradle-plugin"},
     {"isApply": true, "useLocal": true, "localPath": ":plugin:bus-gradle-plugin"},
-    {"isApply": false, "useLocal": true, "localPath": ":feature:mock"},
+    {"isApply": true, "useLocal": false, "localPath": ":plugin:lib:base-transform", "remotePath": "com.blankj:base-transform:1.0"},
+    {"isApply": true, "useLocal": true, "localPath": ":feature:mock"},
     {"isApply": true, "useLocal": true, "localPath": ":lib:base"},
     {"isApply": true, "useLocal": true, "localPath": ":lib:common"},
-    {"isApply": false, "useLocal": true, "localPath": ":lib:subutil"},
+    {"isApply": true, "useLocal": true, "localPath": ":lib:subutil"},
     {"isApply": true, "useLocal": true, "localPath": ":lib:utilcode", "remotePath": "com.blankj:utilcodex:$versionName"},
     {"isApply": true, "useLocal": true, "localPath": ":feature:launcher:app"},
     {"isApply": true, "useLocal": true, "localPath": ":feature:splash:app"},

@@ -4,13 +4,13 @@ import android.graphics.Color;
 import android.view.Gravity;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.StringRes;
-
 import com.blankj.utilcode.util.StringUtils;
 import com.blankj.utilcode.util.Utils;
 import com.ihaidu.base.rv.ItemViewHolder;
 import com.ihaidu.common.R;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.StringRes;
 
 /**
  * <pre>
@@ -75,8 +75,25 @@ public class CommonItemTitle extends CommonItem {
     }
 
     public void setTitle(CharSequence title) {
+        setTitle(title, true);
+    }
+
+    public void setContent(CharSequence content) {
+        setContent(content, true);
+    }
+
+    public void setTitle(CharSequence title, boolean isUpdate) {
         mTitle = title;
-        update();
+        if (isUpdate) {
+            update();
+        }
+    }
+
+    public void setContent(CharSequence content, boolean isUpdate) {
+        mContent = content;
+        if (isUpdate) {
+            update();
+        }
     }
 
     public CharSequence getTitle() {
